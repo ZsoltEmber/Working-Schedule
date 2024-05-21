@@ -16,7 +16,6 @@ public class Worker {
     private long id;
     private String name;
     private short monthlyRequiredWorkingHours;
-
     private boolean ableToWorkIndependently;
 
 
