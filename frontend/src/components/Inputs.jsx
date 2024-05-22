@@ -1,16 +1,23 @@
 import {useState} from "react";
 
 function Inputs() {
-    const [name, setName] = useState(null);
-    const [workHours, setWorkHours] = useState(0);
-    const [ableToWorkIndependently, setAbleToWorkIndependently] = useState(true);
+    const [worker, setWorker] = useState({})
 
 
-
-
-    function onSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        //TODO: FILL ME
+        const addWorker = await fetch("/api/workers", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(worker)
+        })
+        //TODO: NAVIGATE
+        // const response = await addWorker.json();
+        // if(response.status === "200"){
+        //
+        // }
     }
 
 
@@ -19,23 +26,38 @@ function Inputs() {
             <div>
                 <label htmlFor="name">Name:</label>
                 <input name="name"
-                       type={"text"}/>
+                       type={"text"}
+                       value={worker.name}
+                       onChange={(event) => {
+                           setWorker(prev => ({...prev, name: event.target.value}))
+                       }}
+                />
             </div>
 
             <div>
                 <label htmlFor="workHours">Work Hours:</label>
-                <input name="workhours"
-                       type={"number"}/>
+                <input name="workHours"
+                       type={"number"}
+                       value={worker.workHours}
+                       onChange={(event) => {
+                           setWorker(prev => ({...prev, workHours: event.target.value}))
+                       }}
+                />
             </div>
 
 
             <div>
                 <label htmlFor="ableToWorkIndependently">Able to Work independently:</label>
                 <input name="ableToWorkIndependently"
-                       type={"checkbox"}/>
+                       type={"checkbox"}
+                       value={worker.ableToWorkIndependently}
+                       onChange={(event) => {
+                           setWorker(prev => ({...prev, ableToWorkIndependently: event.target.checked}))
+                       }}
+                />
             </div>
-        <button type={"Submit"}>Submit</button>
-        <button>Cancel</button>
+            <button type={"submit"}>Save</button>
+            <button>Cancel</button>
         </form>
 
 
