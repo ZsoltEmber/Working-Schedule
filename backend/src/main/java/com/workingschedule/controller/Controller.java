@@ -2,18 +2,28 @@ package com.workingschedule.controller;
 
 import com.workingschedule.controller.dto.WorkerDTO;
 import com.workingschedule.service.WorkerService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/worker")
 public class Controller {
 
-    private WorkerService workerService;
+    private final WorkerService workerService;
+
+    @Autowired
+    public Controller(WorkerService workerService) {
+        this.workerService = workerService;
+    }
 
     //Create
     @PostMapping
     public WorkerDTO addWorker(@RequestBody WorkerDTO workerDTO){
         return workerService.addWorker(workerDTO);
+    }
+
+    @GetMapping("/asd")
+    public String asd(){
+        return "asd";
     }
 }

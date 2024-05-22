@@ -3,17 +3,20 @@ package com.workingschedule.service;
 import com.workingschedule.controller.dto.WorkerDTO;
 import com.workingschedule.model.Worker;
 import com.workingschedule.repository.WorkerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class WorkerService {
     private final WorkerRepository workerRepository;
-
+    @Autowired
     public WorkerService(WorkerRepository workerRepository) {
         this.workerRepository = workerRepository;
     }
 
     public WorkerDTO addWorker(WorkerDTO workerDTO){
+        System.out.println("asd");
         Worker worker = new Worker();
         worker.setName(workerDTO.name());
         worker.setMonthlyRequiredWorkingHours(workerDTO.workHours());

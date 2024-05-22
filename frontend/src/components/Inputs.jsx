@@ -13,6 +13,8 @@ function Inputs() {
             },
             body: JSON.stringify(worker)
         })
+        const response = await addWorker.json();
+        console.log(response);
         //TODO: NAVIGATE
         // const response = await addWorker.json();
         // if(response.status === "200"){
@@ -22,7 +24,7 @@ function Inputs() {
 
 
     return (
-        <form>
+        <form  onSubmit={(event)=>handleSubmit(event)}>
             <div>
                 <label htmlFor="name">Name:</label>
                 <input name="name"
