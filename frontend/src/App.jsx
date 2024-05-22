@@ -1,9 +1,13 @@
+import WorkerTable from "./components/WorkerTable.jsx";
+import Inputs from "./components/Inputs.jsx";
 
 
 function App() {
 
   return (
-   <div> HELLO FREN </div>
+   <div>
+   <Inputs></Inputs>
+   </div>
   )
 }
 
