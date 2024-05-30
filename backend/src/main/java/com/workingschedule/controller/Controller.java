@@ -22,8 +22,4 @@ public class Controller {
         return workerService.addWorker(workerDTO);
     }
 
-    @GetMapping("/asd")
-    public String asd(){
-        return "asd";
-    }
 }
