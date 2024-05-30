@@ -19,4 +19,5 @@ public class Worker {
     private boolean ableToWorkIndependently;
 
 
+
 }
