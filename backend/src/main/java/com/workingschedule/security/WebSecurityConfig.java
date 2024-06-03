@@ -62,7 +62,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("api/main/**").permitAll()
                                 //TODO: set this below to hasRole
-                                .requestMatchers("api/worker/**").permitAll()
+                                .requestMatchers("api/employee/**").permitAll()
+                                .requestMatchers("api/user/**").permitAll()
                                 .requestMatchers("error").permitAll()
                                 .anyRequest().authenticated()
                 );

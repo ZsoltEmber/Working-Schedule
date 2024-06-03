@@ -1,12 +1,11 @@
-import WorkerTable from "./components/WorkerTable.jsx";
-import Inputs from "./components/Inputs.jsx";
+import RegistrationFrom from "./components/RegistrationFrom.jsx";
 
 
 function App() {
 
   return (
    <div>
-   <Inputs></Inputs>
+   <RegistrationFrom/>
    </div>
   )
 }

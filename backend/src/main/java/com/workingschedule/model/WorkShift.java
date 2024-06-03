@@ -1,7 +1,6 @@
 package com.workingschedule.model;
 
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,5 +21,5 @@ public class WorkShift {
     private LocalDate date;
     private Shift shift;
     //TODO: SET UP RELATIONS
-    private List<Worker> workers;
+//    private List<Employee> employees;
 }

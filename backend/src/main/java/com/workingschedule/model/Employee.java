@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class Worker {
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "worker_seq_gen")
     @SequenceGenerator(name = "worker_seq_gen", sequenceName = "worker_seq", initialValue = 1, allocationSize = 1)
@@ -17,7 +17,4 @@ public class Worker {
     private String name;
     private short monthlyRequiredWorkingHours;
     private boolean ableToWorkIndependently;
-
-
-
 }
