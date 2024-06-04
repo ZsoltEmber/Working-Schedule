@@ -63,9 +63,10 @@ public class WebSecurityConfig {
                         auth.requestMatchers("api/main/**").permitAll()
                                 //TODO: set this below to hasRole
                                 .requestMatchers("api/employee/**").permitAll()
-                                .requestMatchers("api/user/**").permitAll()
+                                .requestMatchers("api/user/register").permitAll()
+                                .requestMatchers("api/user/login").permitAll()
                                 .requestMatchers("error").permitAll()
-                                .anyRequest().authenticated()
+                                .anyRequest().permitAll()
                 );
 
         http.authenticationProvider(authenticationProvider());

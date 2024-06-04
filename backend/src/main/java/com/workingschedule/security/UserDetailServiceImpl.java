@@ -4,6 +4,7 @@ import com.workingschedule.model.AppUser;
 import com.workingschedule.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,7 +31,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             for( Role role : targetUser.get().getRoles()){
                 roles.add(new SimpleGrantedAuthority(role.name()));
             }
-        return new org.springframework.security.core.userdetails.User(targetUser.get().getUsername(), targetUser.get().getPassword(), roles);
+        return new User(targetUser.get().getUsername(), targetUser.get().getPassword(), roles);
         }else {
             throw new UsernameNotFoundException(username + " not found");
         }

@@ -1,15 +1,14 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-function UserRegistrationForm({setAuth: setAuth}){
-
+function LoginForm(){
     const [user, setUser] = useState({});
     const navigate = useNavigate();
 
     //TODO: USE WRAPPER FETCH;
     async function handleSubmit(event) {
         event.preventDefault()
-        const register =  await fetch('/api/user/register', {
+        const login =  await fetch('/api/user/login', {
             method: "POST",
             headers: {
                 "Content-type" : "application/json"
@@ -17,12 +16,19 @@ function UserRegistrationForm({setAuth: setAuth}){
             body: JSON.stringify(user)
         });
 
-        const response = await register.json();
-        if(response.status === "401"){
-            navigate("/");
+        const response = await login.json();
+        console.log(response)
+        if(!response.jwt){
+            throw new Error('Token is missing')
         }
-        navigate("/login");
-        setAuth(true);
+        localStorage.setItem('token', response.jwt);
+        console.log("res: " + response);
+        const role = response.role;
+        localStorage.setItem("role", role)
+
+        if(role === "ROLE_USER"){
+            navigate("/Dummy")
+        }
     }
 
     return(
@@ -47,4 +53,5 @@ function UserRegistrationForm({setAuth: setAuth}){
     );
 }
 
-export default UserRegistrationForm;
+
+export default LoginForm;

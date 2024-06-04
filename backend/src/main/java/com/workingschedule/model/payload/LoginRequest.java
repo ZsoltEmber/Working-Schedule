@@ -1,4 +1,4 @@
 package com.workingschedule.model.payload;
 
-public record LoginRequest(String name, String password) {
+public record LoginRequest(String username, String password) {
 }
