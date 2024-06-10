@@ -1,5 +1,6 @@
 package com.workingschedule.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,4 +18,9 @@ public class Employee {
     private String name;
     private short monthlyRequiredWorkingHours;
     private boolean ableToWorkIndependently;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="app_user_id", referencedColumnName = "id")
+    @JsonIgnore
+    private AppUser user;
 }
