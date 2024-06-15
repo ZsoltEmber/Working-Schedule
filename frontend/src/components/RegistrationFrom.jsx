@@ -1,14 +1,17 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import PasswordError from "./PasswordError.jsx";
 
 function UserRegistrationForm() {
     const [user, setUser] = useState({});
+    const [passwordAgain, setPasswordAgain] = useState(null)
     const navigate = useNavigate();
-    const [passwordAgain, setPasswordAgain] = useState()
+    const [passwordError, setPasswordError] = useState(false)
 
     //TODO: USE WRAPPER FETCH;
     async function handleSubmit(event) {
         event.preventDefault()
+
         const register = await fetch('/api/user/register', {
             method: "POST",
             headers: {
@@ -23,6 +26,7 @@ function UserRegistrationForm() {
         }
         navigate("/login");
     }
+
 
     return (
         <div className={"card w-25 h-50 p-3"}>
@@ -39,23 +43,24 @@ function UserRegistrationForm() {
                     </div>
 
                     <div className={"form-outline mb-4"}>
-                        <input  className={"mw-100"}
-                                placeholder="Password" type={"password"} name={"password"} value={user.password}
+                        <input className={"mw-100"}
+                               placeholder="Password" type={"password"} name={"password"} value={user.password}
                                onChange={(event) => {
                                    setUser(prev => ({...prev, password: event.target.value}))
                                }}/>
                     </div>
 
                     <div className={"form-outline mb-4"}>
-                        <input  className={"mw-100"}
-                                placeholder="Password again" type={"password"} name={"password"} value={user.password}
+                        <input className={"mw-100"}
+                               placeholder="Password again" type={"password"} name={"password"} value={passwordAgain}
                                onChange={(event) => {
-                                   setUser(prev => ({...prev, password: event.target.value}))
+                                   setPasswordAgain(event.target.value)
+                                   event.target.value !== user.password? setPasswordError(true) : setPasswordError(false)
                                }}/>
+                        <span>{passwordError? <PasswordError/> : null}</span>
                     </div>
-
                     <div>
-                        <button className={"btn btn-primary"} type={"submit"}>SUBMIT</button>
+                        <button disabled={passwordError} className={"btn btn-primary"} type={"submit"}>Register</button>
                     </div>
                 </form>
             </div>
