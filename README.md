@@ -39,10 +39,10 @@ This project is designed to create an efficient work schedule generator, tailore
 - [x] Add Readme
 - [x] Set up the database environment.
 - [x] Design the database schema for storing employee information.
-- [ ] Implement CRUD (Create, Read, Update, Delete) operations for employee data.
-- [ ] Develop secure login and authentication mechanisms.
-- [ ] Password hashing and validation processes.
-- [ ] Implement user session management.
+- [x] Implement CRUD (Create, Read, Update, Delete) operations for employee data.
+- [x] Develop secure login and authentication mechanisms.
+- [x] Password hashing and validation processes.
+- [x] Implement user session management.
 - [ ] Define the criteria and constraints for schedule generation.
 - [ ] Develop the scheduling algorithm.
 - [ ] Implement the schedule generator in the application.
