@@ -1,4 +1,4 @@
 package com.workingschedule.model.dto;
 
-public record EmployeeDTO(String name, short workHours, boolean ableToWorkIndependently) {
+public record EmployeeDTO(String name, short monthlyRequiredWorkingHours, boolean ableToWorkIndependently) {
 }

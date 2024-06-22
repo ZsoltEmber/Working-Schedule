@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 
 @Service
@@ -27,7 +26,7 @@ public class EmployeeService {
     public EmployeeDTO addEmployee(EmployeeDTO workerDTO, String username) {
         Employee worker = new Employee();
         worker.setName(workerDTO.name());
-        worker.setMonthlyRequiredWorkingHours(workerDTO.workHours());
+        worker.setMonthlyRequiredWorkingHours(workerDTO.monthlyRequiredWorkingHours());
         worker.setAbleToWorkIndependently(workerDTO.ableToWorkIndependently());
         //TODO: DELETE SOUT
         System.out.println("USERNAME: " + username);
@@ -38,6 +37,20 @@ public class EmployeeService {
 
     public List<Employee> getEmployeesByUser(String username) {
         return employeeRepository.findAllByUser_Username(username);
+    }
+
+
+    public Employee getEmployeeById(long id) {
+        return employeeRepository.findById(id);
+    }
+
+
+    public Employee editEmployee(long id, EmployeeDTO employeeDTO){
+        Employee employee = employeeRepository.findById(id);
+        employee.setName(employeeDTO.name());
+        employee.setAbleToWorkIndependently(employeeDTO.ableToWorkIndependently());
+        employee.setMonthlyRequiredWorkingHours(employeeDTO.monthlyRequiredWorkingHours());
+        return employeeRepository.save(employee);
     }
 
 }

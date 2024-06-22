@@ -1,6 +1,6 @@
 function PasswordError() {
     return <div>
-        <p>Password doesn't match</p>
+        <p style={{color: "red"}}>Password doesn't match</p>
     </div>
 }
 
