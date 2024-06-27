@@ -54,5 +54,11 @@ public class EmployeeController {
        return employeeService.editEmployee(id, employeeDTO);
     }
 
+    //Delete
 
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasRole('USER')")
+    public Employee deleteEmployee(@RequestParam long id){
+        return employeeService.deleteEmployee(id);
+    }
 }

@@ -53,4 +53,10 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    public Employee deleteEmployee(long id){
+        Employee employee = employeeRepository.findById(id);
+        employeeRepository.delete(employee);
+        return employee;
+    }
+
 }

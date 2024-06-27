@@ -4,5 +4,5 @@ import com.workingschedule.security.Role;
 
 import java.util.List;
 
-public record JwtResponse(String jwt, String userName, List<Role> roles) {
+public record JwtResponse(String jwt, String username, List<Role> roles) {
 }
