@@ -1,8 +1,15 @@
 import {useNavigate} from "react-router-dom";
-
-function EmployeeForm({employee, setEmployee, onSave}) {
+import deleteIcon from "../assets/Delete-Icon.png"
+import DeleteDialog from "./DeleteDialog.jsx";
+import {useState} from "react";
+function EmployeeForm({employee, setEmployee, onSave, onDelete}) {
     const navigate = useNavigate();
     const username = localStorage.getItem("username")
+    const [showModal, setShowModal] = useState(false);
+
+    // function handleModal(){
+    //     showModal? setShowModal(false) : setShowModal(true);
+    // }
 
     return (
 
@@ -45,6 +52,12 @@ function EmployeeForm({employee, setEmployee, onSave}) {
                     <button className={"btn btn-primary"} type={"submit"}>Save</button>
                     <button className={"btn btn-secondary"} onClick={() => navigate(`/${username}/employees`)}>Cancel</button>
                 </form>
+                    <img className={"m-4"}
+                    onClick={()=>setShowModal(true)}
+                        src={deleteIcon}
+                        alt={"delete icon"}
+                        height={40}/>
+                    <DeleteDialog onDelete={onDelete} showModal={showModal} onClose={setShowModal}/>
             </div>
         </div>
 
