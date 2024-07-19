@@ -19,6 +19,6 @@ public class WorkShift {
     private long id;
     private LocalDate date;
     private Shift shift;
-    //TODO: SET UP RELATIONS
-//    private List<Employee> employees;
+    @ManyToMany
+    private List<Employee> employees;
 }
