@@ -3,8 +3,6 @@ package com.workingschedule.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.jdbc.Work;
-
 import java.util.List;
 
 @Builder
@@ -26,6 +24,11 @@ public class Employee {
     @JoinColumn(name="app_user_id", referencedColumnName = "id")
     @JsonIgnore
     private AppUser user;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "work_shifts",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "work_shift_id")
+    )
     private List<WorkShift> workShifts;
 }

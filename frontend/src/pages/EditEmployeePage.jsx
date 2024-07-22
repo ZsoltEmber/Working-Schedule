@@ -23,9 +23,28 @@ function EditEmployeePage() {
             },
             body: JSON.stringify(employee)
         })
-        const response = await addEmployees.json();
+        const response = await addEmployees;
         if (!response.ok) {
             navigate("/error")
+        }else{
+            navigate(`/${localStorage.getItem("username")}/employees`)
+        }
+    }
+
+    async function handleDeleteEmployee(id){
+        const deleteEmployee = await fetch(`/api/employee/delete?id=${id}`, {
+            method: "DELETE",
+                headers: {
+                "Content-type": "application/json",
+                    'Authorization': `Bearer ${token}`
+            },
+        })
+        const response = await deleteEmployee;
+        console.log(response)
+        if (!response.ok) {
+            navigate("/error")
+        }else{
+            navigate(`/${localStorage.getItem("username")}/employees`)
         }
     }
 
@@ -47,7 +66,7 @@ function EditEmployeePage() {
     return (
         <div>
             <Navbar/>
-            <EmployeeForm employee={employee} onSave={handleSubmit} setEmployee={setEmployee}/>
+            <EmployeeForm employee={employee} onDelete={handleDeleteEmployee} onSave={handleSubmit} setEmployee={setEmployee}/>
         </div>
     )
 }
