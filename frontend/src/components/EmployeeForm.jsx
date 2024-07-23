@@ -1,15 +1,17 @@
 import {useNavigate} from "react-router-dom";
 import deleteIcon from "../assets/Delete-Icon.png"
-import DeleteDialog from "./DeleteDialog.jsx";
 import {useState} from "react";
+import DeleteModal from "./DeleteModal.jsx";
+
 function EmployeeForm({employee, setEmployee, onSave, onDelete}) {
     const navigate = useNavigate();
     const username = localStorage.getItem("username")
-    const [showModal, setShowModal] = useState(false);
+    const [show, setShow] = useState(false);
 
-    // function handleModal(){
-    //     showModal? setShowModal(false) : setShowModal(true);
-    // }
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
 
     return (
 
@@ -50,14 +52,17 @@ function EmployeeForm({employee, setEmployee, onSave, onDelete}) {
                         />
                     </div>
                     <button className={"btn btn-primary"} type={"submit"}>Save</button>
-                    <button className={"btn btn-secondary"} onClick={() => navigate(`/${username}/employees`)}>Cancel</button>
+                    <button className={"btn btn-secondary"} onClick={() => navigate(`/${username}/employees`)}>Cancel
+                    </button>
                 </form>
-                    <img className={"m-4"}
-                    onClick={()=>setShowModal(true)}
-                        src={deleteIcon}
-                        alt={"delete icon"}
-                        height={40}/>
-                    <DeleteDialog onDelete={onDelete} showModal={showModal} onClose={setShowModal}/>
+                <img className={"m-4"}
+                     onClick={() =>handleShow()}
+                     src={deleteIcon}
+                     alt={"delete icon"}
+                     height={40}/>
+                <DeleteModal show={show} hide={handleClose} onDelete={onDelete}/>
+
+
             </div>
         </div>
 

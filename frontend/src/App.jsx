@@ -7,6 +7,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import {useRoutes} from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SchedulePage from "./pages/SchedulePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 
 function App() {
@@ -36,10 +37,10 @@ function App() {
                 element: <EmployeePage/>,
                 path: `/:username/employees`
             },
-        {
-            element: <SchedulePage/>,
-            path: `/:username/schedule`
-        },
+            {
+                element: <SchedulePage/>,
+                path: `/:username/schedule`
+            },
             {
                 element: <EditEmployeePage/>,
                 path: "/:username/employees/:id"
@@ -52,6 +53,10 @@ function App() {
                 element: <ErrorPage/>,
                 path: "error"
             },
+            {
+                element: <LoginPage/>,
+                path: "/login"
+            }
         ]
     )
     return routes;

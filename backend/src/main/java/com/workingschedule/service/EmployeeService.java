@@ -28,8 +28,6 @@ public class EmployeeService {
         worker.setName(workerDTO.name());
         worker.setMonthlyRequiredWorkingHours(workerDTO.monthlyRequiredWorkingHours());
         worker.setAbleToWorkIndependently(workerDTO.ableToWorkIndependently());
-        //TODO: DELETE SOUT
-        System.out.println("USERNAME: " + username);
         worker.setUser(userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new));
         employeeRepository.save(worker);
         return workerDTO;

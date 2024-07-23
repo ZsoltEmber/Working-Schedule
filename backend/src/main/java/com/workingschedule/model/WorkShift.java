@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -19,6 +20,6 @@ public class WorkShift {
     private long id;
     private LocalDate date;
     private Shift shift;
-    @ManyToMany
+    @ManyToMany(mappedBy = "workShifts", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Employee> employees;
 }
