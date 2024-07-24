@@ -18,8 +18,10 @@ This project is designed to create an efficient work schedule generator, tailore
 ## Built With
 Frontend:
 * [![React][React.js]][React-url]
+* [![JavaScript]][JavaScript]
 
 Backend:
+* [![Java]][Java-url]
 * [![Spring_Boot]][Spring_Boot-url]
 * [![Spring_Security]][Spring_Security-url]
 
@@ -74,6 +76,11 @@ zsolt.ember95@gmail.com
 <!-- MARKDOWN LINKS & IMAGES -->
 [React.js]: https://img.shields.io/badge/React-%23231F20?logo=react
 [React-url]: https://reactjs.org/
+
+[JavaScript]: https://img.shields.io/badge/JavaScript-%23231F20?logo=javascript
+
+[Java]: https://img.shields.io/badge/Java-%23231F20?logo=oracle
+[Java-url]: https://www.java.com/en/
 
 [Spring_Boot]: https://img.shields.io/badge/Spring_Boot-%23231F20?logo=springboot
 [Spring_Boot-url]: https://spring.io/projects/spring-boot 
