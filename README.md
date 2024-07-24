@@ -16,9 +16,14 @@ This project is designed to create an efficient work schedule generator, tailore
 
 
 ## Built With
+Frontend:
 * [![React][React.js]][React-url]
+
+Backend:
 * [![Spring_Boot]][Spring_Boot-url]
 * [![Spring_Security]][Spring_Security-url]
+
+DB:
 * [![PostgreSQL]][PostgreSQL-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
