@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
-import java.util.UUID;
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +13,9 @@ import java.util.UUID;
 @Entity
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq_gen")
-    @SequenceGenerator(name = "client_seq_gen", sequenceName = "client_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
+    @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", initialValue = 1, allocationSize = 1)
     private long id;
-    private UUID publicId = UUID.randomUUID();
     @Column(unique = true)
     private String username;
     private String password;
