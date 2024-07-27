@@ -26,7 +26,6 @@ public class EmployeeService {
     public EmployeeDTO addEmployee(EmployeeDTO workerDTO, String username) {
         Employee worker = new Employee();
         worker.setName(workerDTO.name());
-        worker.setMonthlyRequiredWorkingHours(workerDTO.monthlyRequiredWorkingHours());
         worker.setAbleToWorkIndependently(workerDTO.ableToWorkIndependently());
         worker.setUser(userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new));
         employeeRepository.save(worker);
@@ -47,7 +46,6 @@ public class EmployeeService {
         Employee employee = employeeRepository.findById(id);
         employee.setName(employeeDTO.name());
         employee.setAbleToWorkIndependently(employeeDTO.ableToWorkIndependently());
-        employee.setMonthlyRequiredWorkingHours(employeeDTO.monthlyRequiredWorkingHours());
         return employeeRepository.save(employee);
     }
 

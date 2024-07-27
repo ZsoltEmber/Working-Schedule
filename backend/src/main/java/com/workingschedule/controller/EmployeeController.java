@@ -1,18 +1,13 @@
 package com.workingschedule.controller;
 
-import com.workingschedule.model.AppUser;
 import com.workingschedule.model.Employee;
 import com.workingschedule.model.dto.EmployeeDTO;
-import com.workingschedule.security.Role;
 import com.workingschedule.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -41,7 +36,7 @@ public class EmployeeController {
 
     @GetMapping("/edit")
     @PreAuthorize("hasRole('USER')")
-    public Employee getEmployeeById(@RequestParam long id){
+    public Employee getEmployeeById(@RequestParam long id) {
         return employeeService.getEmployeeById(id);
     }
 
@@ -50,15 +45,15 @@ public class EmployeeController {
 
     @PutMapping("/edit")
     @PreAuthorize("hasRole('USER')")
-    public Employee editEmployee(@RequestParam long id, @RequestBody EmployeeDTO employeeDTO){
-       return employeeService.editEmployee(id, employeeDTO);
+    public Employee editEmployee(@RequestParam long id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.editEmployee(id, employeeDTO);
     }
 
     //Delete
 
     @DeleteMapping("/delete")
     @PreAuthorize("hasRole('USER')")
-    public Employee deleteEmployee(@RequestParam long id){
+    public Employee deleteEmployee(@RequestParam long id) {
         return employeeService.deleteEmployee(id);
     }
 }
